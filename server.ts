@@ -1,5 +1,5 @@
 import express from "express";
-import { Home, Hello, APINames } from "./routes.js";
+import { Home, Hello, APINames } from "./routes.ts";
 
 const server = express();
 const port = 3000;

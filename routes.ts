@@ -1,6 +1,7 @@
 import nodeFetch from "node-fetch";
+import type { RequestHandler } from "express";
 
-export const Home = (_req, res) => {
+export const Home: RequestHandler = (_req, res) => {
 	res.send(`
         <h1>CS 312 Express Server</h1>
         <ul>
@@ -10,26 +11,22 @@ export const Home = (_req, res) => {
     `);
 };
 
-export const Hello = (_req, res) => {
+export const Hello: RequestHandler = (_req, res) => {
 	res.send("Hello world!");
 };
 
-export const APINames = async (_req, res) => {
+export const APINames: RequestHandler = async (_req, res) => {
 	const url = "https://www.usemodernfullstack.dev/api/v1/users";
 
 	const response = await nodeFetch(url);
-	const data = await response.json();
+	// cast as type of the intended API return
+	const users = (await response.json()) as [{ name: string }];
 
-	const names = data
+	const names = users
 		// wrap names in list items
 		.map(user => `<li>${user.name}</li>`)
-		// remove commas between names*
+		// remove commas between names
 		.join("");
 
 	res.send(`<ul>${names}</ul>`);
 };
-
-
-// *this does two things
-// 1. coerces the array of list-wrapped names into a string now instead of at the `res.send()`
-// 2. prevents the array-string from adding commas if it weren't coerced before `res.send()`
