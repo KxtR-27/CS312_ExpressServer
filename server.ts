@@ -1,4 +1,5 @@
-import express, { Request, Response } from "express";
+import express from "express";
+import type { Request, Response } from "express";
 import { routeHome, routeHello, routeNames, routeWeather } from "./routes.js";
 
 const server = express();
