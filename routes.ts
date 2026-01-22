@@ -13,11 +13,11 @@ const routeHello = (): string => "Hello world!";
 
 const routeNames = async (): Promise<string> => {
 	const url = "https://www.usemodernfullstack.dev/api/v1/users";
-	let data: responseItemType[];
+	let data: namesAPIResponse[];
 
 	try {
 		const response = await nodeFetch(url);
-		data = (await response.json()) as responseItemType[];
+		data = (await response.json()) as namesAPIResponse[];
 	} catch (error) {
 		console.log(error);
 		return error;
@@ -29,9 +29,9 @@ const routeNames = async (): Promise<string> => {
 	return `<ul>${names}</ul>`;
 };
 
-const routeWeather = (query: WeatherQueryInterface): WeatherDetailType => queryWeatherData(query);
+const routeWeather = (query: WeatherQuery): WeatherDetails => queryWeatherData(query);
 
-const queryWeatherData = (query: WeatherQueryInterface): WeatherDetailType => {
+const queryWeatherData = (query: WeatherQuery): WeatherDetails => {
 	return {
 		zipcode: query.zipcode,
 		weather: "sunny",

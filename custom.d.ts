@@ -1,14 +1,16 @@
-type responseItemType = {
+// names refactored to personal preference
+
+type namesAPIResponse = {
     id: string; 
     name: string; 
 }; 
 
-type WeatherDetailType = {
+type WeatherDetails = {
     zipcode: string; 
     weather: string; 
     temp?: number; 
 }; 
 
-interface WeatherQueryInterface {
+interface WeatherQuery {
     zipcode: string;
 }
