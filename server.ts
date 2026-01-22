@@ -1,21 +1,22 @@
 import express from "express";
-import { routeHome, routeHello, routeNames, routeWeather } from "./routes.js";
+import Routes from "./routes.js";
 
 const server = express();
 const port = 3000;
 
 server
 	.get("/", (_req, res) => {
-		res.send(routeHome());
+		res.send(Routes.home());
 	})
 	.get("/hello", (_req, res) => {
-		res.send(routeHello());
+		res.send(Routes.hello());
 	})
 	.get("/api/names", (_req, res) => {
-		routeNames().then(response => res.send(response));
+        // only send a resolved response, not the pending promise
+		Routes.names().then(response => res.send(response));
 	})
 	.get("/weather/:zipcode", (req, res) => {
-		res.send(routeWeather({ zipcode: req.params.zipcode }));
+		res.send(Routes.weather({ zipcode: req.params.zipcode }));
 	});
 
 server.listen(port, () => {

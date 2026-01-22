@@ -37,4 +37,11 @@ const queryWeatherData = (query: WeatherQuery) => {
 	};
 };
 
-export { routeHome, routeHello, routeNames, routeWeather };
+const Routes = {
+	home: routeHome,
+	hello: routeHello,
+	names: routeNames,
+	weather: routeWeather,
+};
+
+export default Routes;
