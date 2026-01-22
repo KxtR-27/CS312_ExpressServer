@@ -1,6 +1,6 @@
 import nodeFetch from "node-fetch";
 
-const routeHome = (): string => `
+const routeHome = () => `
     <h1>CS 312 Express Server</h1>
     <ul>
         <li><a href="/hello">Hello</a></li>
@@ -9,11 +9,11 @@ const routeHome = (): string => `
     </ul>
 `;
 
-const routeHello = (): string => "Hello world!";
+const routeHello = () => "Hello world!";
 
-const routeNames = async (): Promise<string> => {
+const routeNames = async () => {
 	const url = "https://www.usemodernfullstack.dev/api/v1/users";
-	let data: namesAPIResponse[];
+	let data;
 
 	try {
 		const response = await nodeFetch(url);
@@ -22,16 +22,14 @@ const routeNames = async (): Promise<string> => {
 		console.log(error);
 		return error;
 	}
-
 	const list = data.map(user => `<li>${user.name}</li>`);
 	const names = list.join("");
-
 	return `<ul>${names}</ul>`;
 };
 
 const routeWeather = (query: WeatherQuery): WeatherDetails => queryWeatherData(query);
 
-const queryWeatherData = (query: WeatherQuery): WeatherDetails => {
+const queryWeatherData = (query: WeatherQuery) => {
 	return {
 		zipcode: query.zipcode,
 		weather: "sunny",

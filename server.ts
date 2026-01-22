@@ -1,23 +1,22 @@
 import express from "express";
-import type { Request, Response } from "express";
 import { routeHome, routeHello, routeNames, routeWeather } from "./routes.js";
 
 const server = express();
 const port = 3000;
 
 server
-	.get("/", (_req: Request, res: Response) => {
+	.get("/", (_req, res) => {
 		res.send(routeHome());
 	})
-	.get("/hello", (_req: Request, res: Response) => {
+	.get("/hello", (_req, res) => {
 		res.send(routeHello());
 	})
-	.get("/api/names", (_req: Request, res: Response) => {
-		routeNames().then(response => res.send(response))
+	.get("/api/names", (_req, res) => {
+		routeNames().then(response => res.send(response));
 	})
-	.get("/weather/:zipcode", (req: Request, res: Response) =>
-		res.send(routeWeather({ zipcode: req.params.zipcode as string })),
-	);
+	.get("/weather/:zipcode", (req, res) => {
+		res.send(routeWeather({ zipcode: req.params.zipcode }));
+	});
 
 server.listen(port, () => {
 	console.log(`Listening on port ${port}`);

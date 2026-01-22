@@ -12,7 +12,9 @@ server
     .get("/api/names", (_req, res) => {
     routeNames().then(response => res.send(response));
 })
-    .get("/weather/:zipcode", (req, res) => res.send(routeWeather({ zipcode: req.params.zipcode })));
+    .get("/weather/:zipcode", (req, res) => {
+    res.send(routeWeather({ zipcode: req.params.zipcode }));
+});
 server.listen(port, () => {
     console.log(`Listening on port ${port}`);
     console.log(`→ http://localhost:${port}`);
