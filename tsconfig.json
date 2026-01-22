@@ -1,13 +1,16 @@
 {
 	"compilerOptions": {
-		// TSIntroActivity
+		// *** TSIntroActivity ***
 		"esModuleInterop": true,
 		"module": "es6",
 		"moduleResolution": "node",
 		"target": "es6",
 		"noImplicitAny": true,
 
-		// Custom
-		"strict": true
+		// *** Custom ***
+        // enforces stricter TypeScript rules for safety and for new developers
+		"strict": true,
+        // `*.ts` import lines are converted to `*.js` imports when compiled
+        "rewriteRelativeImportExtensions": true
 	}
 }
