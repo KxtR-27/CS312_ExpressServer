@@ -1,13 +1,13 @@
 {
 	"compilerOptions": {
-        // TSIntroActivity
+		// TSIntroActivity
 		"esModuleInterop": true,
 		"module": "es6",
 		"moduleResolution": "node",
 		"target": "es6",
 		"noImplicitAny": true,
 
-        // Custom
-        "strict": true,
+		// Custom
+		"strict": true
 	}
 }

@@ -12,7 +12,7 @@ server
 		res.send(Routes.hello());
 	})
 	.get("/api/names", (_req, res) => {
-        // only send a resolved response, not the pending promise
+		// only send a resolved response, not the pending promise
 		Routes.names().then(response => res.send(response));
 	})
 	.get("/weather/:zipcode", (req, res) => {
