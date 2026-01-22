@@ -1,7 +1,9 @@
 {
 	"type": "module",
 	"scripts": {
-		"dev": "nodemon server.ts"
+		"build": "npx tsc",
+		"dev": "nodemon server.ts",
+		"start": "npm run build && node server.js"
 	},
 	"dependencies": {
 		"express": "^5.2.1",
